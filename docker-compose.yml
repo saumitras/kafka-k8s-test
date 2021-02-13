@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  producer:
+    image: saumitras01/k8s-producer:latest
+    ports:
+      - "8080:8080"
+    tty: true
