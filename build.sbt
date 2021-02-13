@@ -32,12 +32,20 @@ def dockerSettings(debugPort: Option[Int] = None) = Seq(
 lazy val producer = (project in file("producer"))
   .enablePlugins(sbtdocker.DockerPlugin)
   .settings(
-
-
+    assemblyMergeStrategy in assembly := {
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case x => MergeStrategy.first
+    },
       libraryDependencies ++= Seq(
-      "org.apache.kafka" %% "kafka" % "2.5.0" % "provided" ,
-      "org.apache.kafka" % "kafka-streams-scala_2.12" % "2.5.0" % "provided" ,
-      "org.apache.avro" % "avro" % "1.9.2" % "provided"
+      "org.apache.kafka" %% "kafka" % "2.5.0",
+      "org.apache.kafka" % "kafka-streams-scala_2.12" % "2.5.0",
+      "org.apache.avro" % "avro" % "1.9.2"
     ),
     dockerSettings()
   )
+
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}

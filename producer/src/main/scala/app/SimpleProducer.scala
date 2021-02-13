@@ -5,9 +5,10 @@ import java.util.{Date, Properties}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 object SimpleProducer extends App {
-  val SERVER = "localhost:9092"
+  val SERVER = "my-cluster-kafka-bootstrap:9092"
   val TOPIC_NAME = "topic-k8s1"
 
+  println(s"Connecting to kafka $SERVER on topic $TOPIC_NAME")
   val props = new Properties()
   props.setProperty("bootstrap.servers", SERVER)
   props.put("client.id", "KafkaTestProducer")
