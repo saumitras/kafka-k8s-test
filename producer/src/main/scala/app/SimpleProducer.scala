@@ -19,6 +19,7 @@ object SimpleProducer extends App {
   val producer = new KafkaProducer[Int, String](props)
 
   for(i <- 1 to 5) {
+    println(s"Record $i")
     val data = new ProducerRecord[Int, String](TOPIC_NAME, i, s"This is record $i ${System.nanoTime()}")
     producer.send(data).get()
     println(data)
