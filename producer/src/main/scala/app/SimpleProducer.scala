@@ -5,8 +5,7 @@ import java.util.{Date, Properties}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 object SimpleProducer extends App {
-  //val SERVER = "kafka-ip:9092"
-  val SERVER = "192.168.1.7:9092"
+  val SERVER = "kafka-ip:9092"
 
   val TOPIC_NAME = "k8s-test2"
 
