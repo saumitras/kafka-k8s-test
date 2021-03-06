@@ -5,8 +5,10 @@ import java.util.{Date, Properties}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 object SimpleProducer extends App {
-  val SERVER = "my-cluster-kafka-bootstrap:9092"
-  val TOPIC_NAME = "topic-k8s1"
+  //val SERVER = "kafka-ip:9092"
+  val SERVER = "192.168.1.7:9092"
+
+  val TOPIC_NAME = "k8s-test2"
 
   println(s"Connecting to kafka $SERVER on topic $TOPIC_NAME")
   val props = new Properties()
@@ -25,5 +27,7 @@ object SimpleProducer extends App {
   }
 
   producer.close()
+  println("Sleeping for some time to flush")
+  Thread.sleep(30000)
 
 }

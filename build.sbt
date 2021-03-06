@@ -25,7 +25,7 @@ def dockerSettings(debugPort: Option[Int] = None) = Seq(
     }
   },
   imageNames in docker := Seq(
-    ImageName(s"saumitras01/${name.value}:latest")
+    ImageName(s"saumitras01/${name.value}:1.0.1")
   )
 )
 
